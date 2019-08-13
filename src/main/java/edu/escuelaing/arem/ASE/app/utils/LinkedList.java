@@ -46,7 +46,7 @@ public class LinkedList<E> implements List<E> {
     /**
      * add an element to the start of the list.
      *
-     * @param data
+     * @param data item to be added
      * @return true if the operation modify the list else false.
      */
     public boolean addFirst(E data) {
@@ -65,7 +65,7 @@ public class LinkedList<E> implements List<E> {
     /**
      * Add an element to the end of the list
      *
-     * @param data
+     * @param data item to be added
      * @return true if the operation modify the list else false
      */
     public boolean addLast(E data) {

@@ -15,6 +15,14 @@
                     <target>8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <mainClass>edu.escuelaing.arem.ASE.app.App</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <name>mi-primera-app</name>
