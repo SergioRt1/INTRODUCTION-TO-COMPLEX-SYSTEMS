@@ -11,20 +11,18 @@ public class FileReader {
      * Read a file and parse a float for each line.
      *
      * @param fileName name of the file that contains the data
-     * @return
+     * @return list of real numbers read from the file
      * @throws IOException
      */
     public static List<Float> getDataFromFile(String fileName) throws IOException {
         List<Float> data = new LinkedList<>();
         final Path path = Paths.get(getBasePath(), fileName);
-        Files.lines(path).forEach(line -> {
-            data.add(Float.parseFloat(line));
-        });
+        Files.lines(path).forEach(line -> data.add(Float.parseFloat(line)));
 
         return data;
     }
 
     private static String getBasePath() {
-        return Paths.get(".").toAbsolutePath().toString();
+        return Paths.get("").toAbsolutePath().toString();
     }
 }

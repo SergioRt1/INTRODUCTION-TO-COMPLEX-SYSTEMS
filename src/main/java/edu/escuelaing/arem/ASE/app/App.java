@@ -7,6 +7,7 @@ import edu.escuelaing.arem.ASE.app.utils.List;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.NoSuchFileException;
 
 /**
  * App starter
@@ -22,8 +23,10 @@ public class App {
 
             String output = String.format("Input: %s\nMean: %.2f\nStandard deviation: %.2f", data, mean, standardDeviation);
             System.out.println(output);
+        } catch (NoSuchFileException e) {
+            System.out.println("File not found in the path: "+e.getMessage());
         } catch (IOException e) {
-            System.out.println("Unexpected error in input provide");
+            System.out.println("Unexpected error in the input provide");
         }
     }
 }
