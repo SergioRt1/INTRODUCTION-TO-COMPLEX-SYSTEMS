@@ -38,8 +38,8 @@ mvn package
  
 ### How to use
 
- You need to put a file with a list of real numbers inside the root directory of the project
- then build, compile and execute the project with the following commands.
+ You need to put a file with a list of real numbers inside the project folder, then build, compile and execute the 
+ project with the following commands.
  
   ```
   mvn package
@@ -47,7 +47,7 @@ mvn package
   mvn exec:java  
   ```
   
-  finally enter the name of the file via standard input, then you will get the mean and standard deviation of the numbers
+  finally enter the relative path to the file from the root directory via standard input, then you will get the mean and standard deviation of the numbers
   inside the provided file via standard output.
   
 ### Built with
