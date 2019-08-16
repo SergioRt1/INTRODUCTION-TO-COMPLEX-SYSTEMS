@@ -8,6 +8,8 @@
  
  also define a custom linkedList structure.
  
+ [Architecture description](architectureDescription.pdf)
+ 
 ### Prerequisites
 
  You need to have installed Java at least 1.8 and Apache Maven.
@@ -44,11 +46,17 @@ mvn package
   ```
   mvn package
   mvn compile
-  mvn exec:java  
+  mvn exec:java 
   ```
   
   finally enter the relative path to the file from the root directory via standard input, then you will get the mean and standard deviation of the numbers
   inside the provided file via standard output.
+  
+  
+  To get the JavaDoc run
+  ```
+  mvn javadoc:javadoc
+  ```
   
 ### Built with
 
