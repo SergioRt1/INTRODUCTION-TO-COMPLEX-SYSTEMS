@@ -1,13 +1,15 @@
 package edu.escuelaing.arem.ASE.app.utils;
 
-public interface List<E> {
+import java.util.Collection;
+
+public interface List<E> extends Collection<E> {
 
     /**
      * Remove the first apparition of the element.
      * @param data element
      * @return true if the element was deleted else false
      */
-    boolean remove(E data);
+    boolean remove(Object data);
 
 
     /**

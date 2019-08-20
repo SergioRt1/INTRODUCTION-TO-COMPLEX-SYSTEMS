@@ -1,5 +1,7 @@
 package edu.escuelaing.arem.ASE.app;
 
+import edu.escuelaing.arem.ASE.app.controllers.StatisticController;
+import edu.escuelaing.arem.ASE.app.services.StatisticService;
 import edu.escuelaing.arem.ASE.app.statistic.StatisticCalculator;
 import edu.escuelaing.arem.ASE.app.utils.FileReader;
 import edu.escuelaing.arem.ASE.app.utils.List;
@@ -14,6 +16,18 @@ import java.nio.file.NoSuchFileException;
  */
 public class App {
     public static void main(String[] args) {
+        new StatisticController(new StatisticService());
+    }
+
+    static int getPort() {
+        if (System.getenv("PORT") != null) {
+            return Integer.parseInt(System.getenv("PORT"));
+        }
+
+        return 4567; //returns default port if heroku-port isn't set
+    }
+
+    public static void consoleApp(){
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
         try {
             String fileName = buffer.readLine();

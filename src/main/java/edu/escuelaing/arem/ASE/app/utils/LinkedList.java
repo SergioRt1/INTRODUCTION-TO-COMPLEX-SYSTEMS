@@ -1,5 +1,9 @@
 package edu.escuelaing.arem.ASE.app.utils;
 
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 /**
  * Doubly-linked list implementation of the List interface, permits all kind of elements (including null).
  *
@@ -17,7 +21,7 @@ public class LinkedList<E> implements List<E> {
         this.size = 0;
     }
 
-    public boolean remove(E data) {
+    public boolean remove(Object data) {
         boolean removed = false;
         LinkedList.Node<E> node = this.first;
         int j;
@@ -44,25 +48,6 @@ public class LinkedList<E> implements List<E> {
     }
 
     /**
-     * add an element to the start of the list.
-     *
-     * @param data item to be added
-     * @return true if the operation modify the list else false.
-     */
-    public boolean addFirst(E data) {
-        if (this.isEmpty()) {
-            firstInsertion(data);
-        } else {
-            LinkedList.Node<E> newFistsNode = new LinkedList.Node<>(null, data, this.first);
-            this.first.prev = newFistsNode;
-            this.first = newFistsNode;
-            this.size++;
-        }
-
-        return true;
-    }
-
-    /**
      * Add an element to the end of the list
      *
      * @param data item to be added
@@ -75,6 +60,25 @@ public class LinkedList<E> implements List<E> {
             LinkedList.Node<E> newLastNode = new LinkedList.Node<>(this.last, data, null);
             this.last.next = newLastNode;
             this.last = newLastNode;
+            this.size++;
+        }
+
+        return true;
+    }
+
+    /**
+     * add an element to the start of the list.
+     *
+     * @param data item to be added
+     * @return true if the operation modify the list else false.
+     */
+    public boolean addFirst(E data) {
+        if (this.isEmpty()) {
+            firstInsertion(data);
+        } else {
+            LinkedList.Node<E> newFistsNode = new LinkedList.Node<>(null, data, this.first);
+            this.first.prev = newFistsNode;
+            this.first = newFistsNode;
             this.size++;
         }
 
@@ -118,6 +122,13 @@ public class LinkedList<E> implements List<E> {
         return node;
     }
 
+    private void validateBounds(int i) throws IndexOutOfBoundsException {
+        if (i < 0 || this.size <= i) {
+            String message = String.format("index out of bound trying to find the position %d in a LinkedList of size %d", i, this.size);
+            throw new IndexOutOfBoundsException(message);
+        }
+    }
+
     private void removeNode(LinkedList.Node<E> nodeToRemove) {
         if (this.size == 1) {
             this.first = null;
@@ -132,13 +143,6 @@ public class LinkedList<E> implements List<E> {
         this.size--;
     }
 
-    private void validateBounds(int i) throws IndexOutOfBoundsException {
-        if (i < 0 || this.size <= i) {
-            String message = String.format("index out of bound trying to find the position %d in a LinkedList of size %d", i, this.size);
-            throw new IndexOutOfBoundsException(message);
-        }
-    }
-
     private static class Node<E> {
         E item;
         LinkedList.Node<E> prev;
@@ -149,6 +153,7 @@ public class LinkedList<E> implements List<E> {
             this.next = next;
             this.prev = prev;
         }
+
     }
 
     @Override
@@ -170,4 +175,77 @@ public class LinkedList<E> implements List<E> {
         }
         return string;
     }
+
+
+    @Override
+    public Iterator<E> iterator() {
+        return new LinkedListIterator();
+    }
+
+    private class LinkedListIterator implements Iterator<E> {
+        int nextIndex;
+        LinkedList.Node<E> actualNode;
+
+        public LinkedListIterator() {
+            this.nextIndex = 0;
+            this.actualNode = LinkedList.this.first;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return this.nextIndex < LinkedList.this.size;
+        }
+
+        @Override
+        public E next() {
+            if (!hasNext()) throw new NoSuchElementException();
+            E item = actualNode.item;
+            actualNode = actualNode.next;
+            nextIndex++;
+
+            return item;
+        }
+    }
+
+    // Unimplemented extra methods of Collection
+
+    @Override
+    public boolean contains(Object o) {
+        return false;
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> collection) {
+        return false;
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends E> collection) {
+        return false;
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> collection) {
+        return false;
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> collection) {
+        return false;
+    }
+
+    @Override
+    public void clear() {
+    }
+
+    @Override
+    public Object[] toArray() {
+        return new Object[0];
+    }
+
+    @Override
+    public <T> T[] toArray(T[] ts) {
+        return null;
+    }
+
 }

@@ -36,4 +36,12 @@ public class StatisticCalculator {
 
         return Math.sqrt(sum / (data.size() - 1));
     }
+
+    public static double calculateStandardDeviation(List<Float> data) {
+        double mean = calculateMean(data);
+
+        return calculateStandardDeviation(data, mean);
+    }
+
+
 }
