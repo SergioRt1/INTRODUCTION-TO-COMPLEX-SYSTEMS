@@ -5,6 +5,7 @@ import edu.escuelaing.arem.ASE.app.services.StatisticService;
 import edu.escuelaing.arem.ASE.app.statistic.StatisticCalculator;
 import edu.escuelaing.arem.ASE.app.utils.FileReader;
 import edu.escuelaing.arem.ASE.app.utils.List;
+import spark.Spark;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,6 +17,7 @@ import java.nio.file.NoSuchFileException;
  */
 public class App {
     public static void main(String[] args) {
+        Spark.port(getPort());
         new StatisticController(new StatisticService());
     }
 
