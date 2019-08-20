@@ -19,6 +19,8 @@ public class StatisticController {
     public StatisticController(StatisticService statisticService) {
         this.statisticService = statisticService;
 
+        Spark.get("/", (request, response) -> "Statistics Calculator API");
+
         Spark.post(Router.STATISTIC_CALCULATOR, (request, response) -> {
             List<Float> data = JsonUtil.fromJson(request.body(), typeOfListOfFloat);
             response.type("application/json");
