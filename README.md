@@ -62,7 +62,7 @@ mvn package
   
 #### API Spark
   
-  You can use the API via cURL, the valid urls are
+  You can use the [API in Heroku](https://statistic-calculator.herokuapp.com) or run it local, the valid urls are:
   ```
   /api/calculate
   /api/calculate/mean
@@ -71,7 +71,7 @@ mvn package
   An example of a shell cURL
    ```
    curl --request POST \
-     --url http://localhost:4567/api/calculate \
+     --url https://statistic-calculator.herokuapp.com/api/calculate \
      --header 'Content-Type: application/json' \
      --header 'cache-control: no-cache' \
      --data '[ 15, 69.9, 6.5, 22.4, 28.4, 65.9, 19.4, 198.7, 38.8, 138.2 ]'
