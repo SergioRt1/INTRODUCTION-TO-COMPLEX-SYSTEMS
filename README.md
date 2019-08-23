@@ -8,7 +8,7 @@
  
  also define a custom linkedList structure.
  
- [Architecture description](architectureDescription.pdf)
+ [Architecture description](files/architectureDescription.pdf)
  
 ### Prerequisites
 
